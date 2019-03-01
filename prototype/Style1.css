@@ -1,0 +1,60 @@
+body{
+	margin: 0;
+    padding: 0;
+    font-family:'Arial', 'serif';
+}
+.navigasjon{
+    background-color: Blue;
+    color: white;
+    list-style: none;
+    text-align: right;
+    padding: 10px;
+    padding-right: 25px;
+    background-color: fill;
+}
+.Logobilde1{
+    max-width: 80px;
+    margin: 0px 0px 0px 0px;
+    float: top-left;
+    position: absolute;
+}
+.navigasjon > li {
+    display: inline-block;
+    padding-right: 0;
+    font-size: 20px;
+    clear: right;
+}
+.navigasjon > li > a{
+    display: inline-block;
+    padding: 14px 18px;
+    text-decoration: none;
+    color: white;
+    transition: background-color .2s;
+}
+.navigasjon > li > a:hover {
+    color: #fff;
+    background-color: #000;
+}
+.footer {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   background-color: blue;
+   color: white;
+   padding: 0;
+   height: 60px;
+   margin-top: 40px;
+   text-align: center;
+   font-size: 20px;
+}
+.footer > p {
+    margin: 0
+}
+.infotekst > p{
+	font-size: 20px;
+    color: blue;
+    text-align: center;
+    font-weight: bold;
+    padding: 0px 0px 10px 0px;
+}

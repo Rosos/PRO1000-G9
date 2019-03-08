@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<title>Chatbot_Prototype</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			var accessToken = "bb94873d53784e249d0209080db956b9";
+			var baseUrl = "https://api.api.ai/v1/";
+			$(document).ready(function() {
+				$("#input").keypress(function(event) {
+					if (event.which == 13) {
+						$('.chatBox').append('<span class="userInput">' + $('input').val() + '</span><br><br>')
+						event.preventDefault();
+						let query  = $('input').val()
+						$('input').val('')
+						send(query);
+					}
+				});
+			});
+		
+			function send(query) {
+				var text = query;
+				$.ajax({
+					type: "POST",
+					url: baseUrl + "query?v=20180101",
+					contentType: "application/json; charset=utf-8",
+					dataType: "json",
+					headers: {
+						"Authorization": "Bearer " + accessToken
+					},
+					data: JSON.stringify({ query: text, lang: "no", sessionId: "somerandomthing" }),
+					success: function(data) {
+						setResponse(data);
+					}
+				});
+			}
+			function setResponse(val) {
+				$(".chatBox").append('<span class="responseData">' + val.result.fulfillment.speech + '</span><br><br>');
+			}
+		</script>
+		<style type="text/css">
+			html {
+				padding: 0;
+				margin: 0;
+			}
+			body {
+				width: 100%;
+				margin: 0 auto;
+				height: 100%;
+				background-color: lightblue;
+			}
+
+			div.main {
+				width: 70%;
+				height: 100%;
+				margin: auto 0;
+				background-color: white;
+			}
+			div.chatbot {
+				width: 300px;
+				height: 600px;
+				background-color: black;
+				border-style: none;
+				border-width: 5px;
+				border-radius: 5px;
+				margin-left: 70%;
+				margin-top: 10%;
+			}
+			div.chatBox {
+				width: 280px;
+				height: 565px;
+				overflow: auto;
+				margin: auto;
+			}
+			.input {
+				width: 200px;
+				margin: auto;
+			}
+			.userInput {
+				float: left;
+				background-color: #c9c9c9;
+				padding: 10px;
+				border-radius: 10px;
+					margin-top: 10px;
+			}
+			.responseData {
+				float:right;
+				background-color: #99ff33;
+				padding: 10px;
+				border-radius: 10px;
+				margin-top: 10px;
+			}
+			button { 
+				width: 50px; 
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<div class="chatbot">
+				<div class = 'chatBox'>
+				</div>
+				<div class="input">
+					<input id="input" type="text"> <button id="rec" style="border-radius: 5px;">send</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

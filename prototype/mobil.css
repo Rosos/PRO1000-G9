@@ -1,0 +1,131 @@
+			* {
+				margin: 0;
+			}
+
+			.main {
+				background-image: url('bilder/phone.jpg');
+				background-repeat: no-repeat;
+				background-size: 80%;
+				background-position: center;
+				width: 70%;
+				height: 100%;
+				left: 0;
+				right: 0;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			header {
+				position: relative;
+				background-color: #1d324c;
+				width: 414px;
+				height: 60px;
+				margin-left: auto;
+				margin-right: auto;
+				right: 11px;
+				top: 76px;
+				color: white;
+				text-align: center;
+				font-size: 38px;
+				font-family: "tahoma";
+				letter-spacing: -4px;
+			}
+
+			.chatbot {
+				position: relative;
+				width: 414px;
+				height: 670px;
+				background-color: #304f75;
+				border-style: none;
+				border-width: 5px;
+				border-radius: 0px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: calc(10% + 60px);
+				right: 11px;
+				top: -89px;
+			}
+
+			div.chatBox {
+				height: 625px;
+				overflow: auto;
+				margin: auto;
+				font-size: 20px;
+				font-family: "tahoma";
+			}
+
+
+			#input {
+				position: absolute;
+				bottom: -1px;
+				width: 100%;
+				height: 50px;
+				margin: auto;
+				font-size: 24px;
+				border: none;
+/*				border-bottom: 2px solid black;*/
+				background-color: #1d324c;
+				font-family: "tahoma";
+				-webkit-transition: 0.5s;
+  				transition: 0.5s;
+/*  			background-image: url('bilder/keyboard.png');
+  				background-position: 15px 8px;
+  				background-repeat: no-repeat;
+  				background-size: 8%;*/
+  				padding-left: 20px;
+  				color: white;
+			}
+
+/*			#input:focus {
+				background-color: white;
+				-webkit-transition: 0.5s;
+  				transition: 0.5s;
+			}*/
+
+			span {
+				display: block;
+				color: white;
+				border-bottom: solid;
+				border-color: white;
+				width: 95%;
+				border-width: 2px;
+				height: auto;
+				font-size: 30px;
+				padding: 10px;
+			}
+
+			.backbtn {
+				width: 50px;
+				display: none;
+			}
+
+			.userInput {
+				text-align: right;
+				line-height: 1.4;
+				clear: left;
+			}
+
+			.responseData {
+				text-align: left;
+				line-height: 1.4;
+				clear: right;
+			}
+
+			.botpic {
+				height: 40px;
+				padding-right: 10px;
+				float: left;
+				clear: right;
+			}
+
+			button { 
+				display: none;
+				width: 50px; 
+			}
+
+			.userpic {
+				height: 40px;
+				padding-left: 10px;
+				float: right;
+				clear: right;
+			}

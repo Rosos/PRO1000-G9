@@ -1,18 +1,18 @@
 <html>
 	<head>
-		<title>Chatbot_Prototype</title>
+		<title>Mobil Chatbot</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel = "stylesheet"
 			type = "text/css"
-			href = "prototype/demo.css" />
+			href = "prototype/mobil.css" />
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 			<script type="text/javascript">
-				var accessToken = "bb94873d53784e249d0209080db956b9";
+				var accessToken = "40d24283d3324f6e8294d648bd3b691a";
 				var baseUrl = "https://api.api.ai/v1/";
 				$(document).ready(function() {
 					$("#input").keypress(function(event) {
 						if (event.which == 13) {
-							$('.chatBox').append('<span class="userInput">' + $('input').val() + '</span><br><br>')
+							$('.chatBox').append('<span class="userInput">' + $('input').val() + '<img class="userpic" src="prototype/bilder/userpic.png">' + '</span>')
 							event.preventDefault();
 							let query  = $('input').val()
 							$('input').val('')
@@ -38,31 +38,23 @@
 					});
 				}
 				function setResponse(val) {
-					$(".chatBox").append('<span class="responseData">' + val.result.fulfillment.speech + '</span><br><br>');
+					$(".chatBox").append('<span class="responseData">' + '<img class="botpic" src="prototype/bilder/botpic.png">' + val.result.fulfillment.speech + '</span>');
 				}
 			</script>
 		</head>
 		<body>
 			<div class="main">
 				<header>
-					<p class="tittel">KURS&FOREDRAG</p>
+					<img class="backbtn" src="prototype/bilder/back.png">
+					<div class="tittel">KURS&FOREDRAG</div>
 				</header>
-				<ul>
-					<li><a href="#hjem" class="inactive">HJEM</a></li>
-					<li><a href="#kurs" class="active">KURS</a></li>
-					<li><a href="#kontakt" class="inactive">KONTAKT</a></li>
-					<li><a href="#om" class="inactive">OM</a></li>
-				</ul>
 				<div class="chatbot">
 					<div class = 'chatBox'>
 					</div>
 					<div class="input">
-						<input id="input" type="text" placeholder="Si hei!"> <button id="rec" style="border-radius: 5px;">send</button>
+						<input id="input" type="text" placeholder=". . ."> <button id="rec" style="border-radius: 5px;">send</button>
 					</div>
 				</div>
-				<footer>
-					kurs&foredragAScopyright2020 all rights reserved this is a placeholder text lalalalalalalalaalalala
-				</footer>
 			</div>
 		</body>
 	</html>

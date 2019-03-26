@@ -10,6 +10,8 @@
 				var meetingArray = ["Pilates", "Yoga", "Aerobics", "Spinning"];
 				var accessToken = "40d24283d3324f6e8294d648bd3b691a";
 				var baseUrl = "https://api.api.ai/v1/";
+				var kurs;
+
 				$(document).ready(function() {
 					$("#input").keypress(function(event) {
 						if (event.which == 13) {
@@ -27,6 +29,7 @@
 							$('input').val('');
 							send(query);
 							console.log('data-js-reply-'+userInputSpans.length, userInput);
+							$(".chatBox").stop().animate({ scrollTop: $(".chatBox")[0].scrollHeight}, 1000);
 						}
 					});
 				});
@@ -40,7 +43,7 @@
 						headers: {
 							"Authorization": "Bearer " + accessToken
 						},
-						data: JSON.stringify({ query: text, lang: "no", sessionId: "somerandomthing" }),
+						data: JSON.stringify({ query: text, lang: "en", sessionId: "somerandomthing" }),
 						success: function(data) {
 							setResponse(data);
 						}
@@ -48,21 +51,25 @@
 				}
 				function clickRichMessage(reply) {
 					let query = reply;
-					document.getElementById('richMessage').innerHTML = reply;
+					// id.innerHTML = reply;
 					send(query);
 				}
-					var Ja = "Ja";
-					var Nei = "Nei";
+				function kursReg(course) {
+					kurs = course;
+				}
+
+					var Ja = "Yes";
+					var Nei = "No";
 				// $(document).ready(function() {
 				function setResponse(val) {
 					var $chatBox = $('div.chatBox');
 					var richmessageInputX;
 					var keyword;
 					// rich message html for Y/N
-					var richmessageInputYN = ('<span id="yesInput" onclick="clickRichMessage(Ja, yesInput)">Ja</span>' + '<span id="noInput" onclick="clickRichMessage(Nei)">Nei</span><br><br>');
+					var richmessageInputYN = ('<span id="yesInput" onclick="clickRichMessage(Ja)">Yes</span>' + '<span id="noInput" onclick="clickRichMessage(Nei)">No</span><br><br>');
 					// rich message html for lists
 					var richmessageInputList = ( 
-						'<ul class="meetingList"><li class="meetingListItem" onclick="clickRichMessage(meetingArray[0])">' + meetingArray[0] + '</li><li class="meetingListItem" onclick="clickRichMessage(meetingArray[1])>' + meetingArray[1] + '</li><li class="meetingListItem" onclick="clickRichMessage(meetingArray[2])>' + meetingArray[2] + '</li><li class="meetingListItem meetingListItemLast" onclick="clickRichMessage(meetingArray[3])>' + meetingArray[3] + '</li></ul>'
+						'<ul class="meetingList"><li class="meetingListItem" onclick="clickRichMessage(meetingArray[0]), kursReg(meetingArray[0])">' + meetingArray[0] + '</li><li class="meetingListItem" onclick="clickRichMessage(meetingArray[1]), kursReg(meetingArray[1])">' + meetingArray[1] + '</li><li class="meetingListItem" onclick="clickRichMessage(meetingArray[2]), kursReg(meetingArray[2])">' + meetingArray[2] + '</li><li class="meetingListItem meetingListItemLast" onclick="clickRichMessage(meetingArray[3]), kursReg(meetingArray[3])">' + meetingArray[3] + '</li></ul>'
 					);
 					console.log(val.result.fulfillment);
 					var reply = val.result.fulfillment.speech.toString();
@@ -76,17 +83,23 @@
 						if ( keyword === "#melde" ) {
 							$(".chatBox").append('<span class="responseData">' + replyLine + '</span><br><br>');
 							richmessageInputX = richmessageInputYN;
-							var $richmessage = $('<div class="richMessage" id="richMessage">' + richmessageInputX + '</div>');
+							var $richmessage = $('<div class="richMessage" id="richMessage">' + richmessageInputX + '</div><br><br><br><br><br>');
 							$chatBox.append($richmessage);
 						} else if ( keyword === "#kurs" ) {
-							$(".chatBox").append('<span class="responseData">' + replyLine + '</span><br><br>');
+							$(".chatBox").append('<span class="responseData">' + replyLine + '</span><br><br><br><br>');
 							richmessageInputX = richmessageInputList;
-							var $richmessage = $('<div class="richMessage">' + richmessageInputX + '</div>');
+							var $richmessage = $('<div class="richMessage">' + richmessageInputX + '</div><br><br><br><br><br><br><br>');
 							$chatBox.append($richmessage);
+							$(".chatBox").stop().animate({ scrollTop: $(".chatBox")[0].scrollHeight}, 1000);
+						} else if ( keyword === "#registrert" ) {
+							replyArray.push("for the course " + kurs + ".");
+							replyLine = replyArray.join(' ');
+							$(".chatBox").append('<span class="responseData">' + replyLine + '</span><br><br><br><br>');
 						}
 					} else {
-						$(".chatBox").append('<span class="responseData">' + val.result.fulfillment.speech + '</span><br><br>');
+						$(".chatBox").append('<span class="responseData">' + val.result.fulfillment.speech + '</span><br><br><br><br>');
 					}
+					$(".chatBox").stop().animate({ scrollTop: $(".chatBox")[0].scrollHeight}, 1000);
 				}
 				// function download(data, filename, type) {
 				// 	var file = new Blob([data], {type: type});
@@ -110,13 +123,13 @@
 		<body>
 			<div class="main">
 				<header>
-					<p class="tittel">KURS&FOREDRAG</p>
+					<p class="tittel">COURSES&LECTURES</p>
 				</header>
 				<ul class="header">
-					<li class="header"><a href="#hjem" class="inactive">HJEM</a></li>
-					<li class="header"><a href="kursogforedrag.html" class="active">KURS</a></li>
-					<li class="header"><a href="#kontakt" class="inactive">KONTAKT</a></li>
-					<li class="header"><a href="#om" class="inactive">OM</a></li>
+					<li class="header"><a href="#hjem" class="inactive">HOME</a></li>
+					<li class="header"><a href="kursogforedrag.html" class="active">COURSES</a></li>
+					<li class="header"><a href="#kontakt" class="inactive">HI</a></li>
+					<li class="header"><a href="#om" class="inactive">ABOUT</a></li>
 				</ul>
 				<div class="chatbot">
 					<div class = 'chatBox'>

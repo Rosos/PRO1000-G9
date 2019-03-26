@@ -25,7 +25,7 @@
 				text-align: center;
 			}
 
-			ul {
+			ul.header {
 				list-style-type: none;
 				margin: 0;
 				margin-left: 50px;
@@ -34,7 +34,7 @@
 				overflow: hidden;
 			}
 
-			li {
+			li.header {
 				float: left;
 				padding: 20px 50px;
 
@@ -113,7 +113,9 @@
 				display: block;
 				float: right;
 				clear: left;
-				background-color: #c9c9c9;
+				clear: right;
+				background-color: #31ce9a;
+				color: white;
 				padding: 10px;
 				border-radius: 10px;
 				margin-top: 10px;
@@ -121,18 +123,63 @@
 				margin-right: 10px;
 			}
 
+			.richMessage {
+				display: block;
+				float: right;
+				clear: left;
+				clear: right;
+				background-color: #31ce9a;
+				color: white;
+				padding: 10px;
+				padding-top: 15px;
+				border-radius: 10px;
+				margin-top: 10px;
+				margin-left: 10px;
+				margin-right: 10px;
+				line-height: 18px;
+			}
+
 			.responseData {
 				display: inline-block;
 				float: left;
 				clear: right;
-				background-color: #1777E5;
-				color: white;
+				background-color: #c9c9c9;
+				color: black;
 				padding: 10px;
 				border-radius: 10px;
 				margin-top: 10px;
 				margin-left: 10px;
 				max-width: 500px;
 				margin-bottom: 10px;
+			}
+
+			#yesInput {
+				padding: 15px;
+				padding-bottom: 25px;
+				border-right: solid white 2px;
+				cursor: pointer;
+			}
+
+			#noInput {
+				padding: 15px;
+				cursor: pointer;
+			}
+
+			li.meetingListItem {
+				clear: both;
+				list-style-type: none;
+			}
+
+			.meetingListItem {
+				border-bottom: solid white 2px;
+				padding: 15px;
+				padding-left: 30px;
+				cursor: pointer;
+/*				width: 100%;
+*/			}
+
+			.meetingListItemLast {
+				border-bottom: none;
 			}
 
 			button { 

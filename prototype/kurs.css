@@ -109,6 +109,16 @@
   				transition: 0.5s;
 			}
 
+
+			.chatBubble {
+				display: block;
+				padding: 10px;
+				border-radius: 10px;
+				margin-top: 10px;
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+
 			.userInput {
 				display: block;
 				float: right;
@@ -116,11 +126,19 @@
 				clear: right;
 				background-color: #31ce9a;
 				color: white;
-				padding: 10px;
-				border-radius: 10px;
-				margin-top: 10px;
-				margin-left: 10px;
-				margin-right: 10px;
+			}
+
+			.sb1:before {
+				content: "";
+				width: 0px;
+				height: 0px;
+				position: absolute;
+				border-left: 10px solid #00bfb6;
+				border-right: 10px solid transparent;
+				border-top: 10px solid #00bfb6;
+				border-bottom: 10px solid transparent;
+				right: -20px;
+				top: 6px;
 			}
 
 			.richMessage {
@@ -140,17 +158,10 @@
 			}
 
 			.responseData {
-				display: inline-block;
 				float: left;
 				clear: right;
 				background-color: #c9c9c9;
 				color: black;
-				padding: 10px;
-				border-radius: 10px;
-				margin-top: 10px;
-				margin-left: 10px;
-				max-width: 500px;
-				margin-bottom: 10px;
 			}
 
 			#yesInput {

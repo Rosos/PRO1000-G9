@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Chatbot_Prototype</title>
+		<title>WIP Chatbot</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel = "stylesheet"
 			type = "text/css"
@@ -17,7 +17,7 @@
 						if (event.which == 13) {
 							var $chatBox = $('div.chatBox');
 							var userInput = $('input').val();
-							var $span = $('<span class="userInput">' + userInput + '</span><br><br>');
+							var $span = $('<span class="chatBubble userInput sb1">' + userInput + '</span><br><br>');
 							var userInputSpans = $('span.userInput');
 							console.log('data-js-reply-'+userInputSpans.length, userInput);
 							// $chatBox.attr('data-js-reply-'+userInputSpans.length, userInput);
@@ -81,12 +81,12 @@
 						replyArray.length = (replyArray.length) -1;
 						var replyLine = replyArray.join(' ');
 						if ( keyword === "#melde" ) {
-							$(".chatBox").append('<span class="responseData">' + replyLine + '</span><br><br>');
+							$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br>');
 							richmessageInputX = richmessageInputYN;
 							var $richmessage = $('<div class="richMessage" id="richMessage">' + richmessageInputX + '</div><br><br><br><br><br>');
 							$chatBox.append($richmessage);
 						} else if ( keyword === "#kurs" ) {
-							$(".chatBox").append('<span class="responseData">' + replyLine + '</span><br><br><br><br>');
+							$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br><br><br>');
 							richmessageInputX = richmessageInputList;
 							var $richmessage = $('<div class="richMessage">' + richmessageInputX + '</div><br><br><br><br><br><br><br>');
 							$chatBox.append($richmessage);
@@ -94,10 +94,12 @@
 						} else if ( keyword === "#registrert" ) {
 							replyArray.push("for the course " + kurs + ".");
 							replyLine = replyArray.join(' ');
-							$(".chatBox").append('<span class="responseData">' + replyLine + '</span><br><br><br><br>');
+							$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br><br><br>');
+						} else {
+							$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br><br><br>');
 						}
 					} else {
-						$(".chatBox").append('<span class="responseData">' + val.result.fulfillment.speech + '</span><br><br><br><br>');
+						$(".chatBox").append('<span class="chatBubble responseData">' + val.result.fulfillment.speech + '</span><br><br><br><br>');
 					}
 					$(".chatBox").stop().animate({ scrollTop: $(".chatBox")[0].scrollHeight}, 1000);
 				}

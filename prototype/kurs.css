@@ -18,11 +18,18 @@ body {
 	position: absolute;
 }
 
+.header {
+	width: 100%;
+	height: 10em;
+	background-color: blue;
+}
+
 p.tittel {
 	font-size: 70px;
 	font-family: "tahoma";
 	letter-spacing: -4px;
 	text-align: center;
+	color: white;
 }
 
 ul.header {
@@ -64,6 +71,8 @@ a.active {
 	inset 0 -0.2em #000;
 }
 
+
+/** Chat-vindu **/
 .chatbot {
 	position: relative;
 	width: 80%;
@@ -196,12 +205,4 @@ li.meetingListItem {
 button { 
 	display: none;
 	width: 50px; 
-}
-
-footer {
-	font-size: 15px;
-	text-align: center;
-	position: absolute;
-	bottom: 5%;
-	left: 25%;
 }

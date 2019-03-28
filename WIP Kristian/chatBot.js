@@ -3,10 +3,19 @@
 		var accessToken = "40d24283d3324f6e8294d648bd3b691a";
 		var baseUrl = "https://api.api.ai/v1/";
 		var kurs;
-		var language = "no";
+		var language = "en";
 
-		function languageSelect() {
-	
+		function languageSelect(lang) {
+			language = lang;
+			var input = document.getElementById('input');
+			if ( language == "en" ) {
+				input.placeholder = "Say hello!";
+			}
+			else if ( language == "no" ) {
+				input.placeholder = "Si hei!";
+			}
+			input.disabled = false;
+			document.getElementById('languageSelect').style.display = "none";
 		}
 
 		$(document).ready(function () { /* Funksjon for å sette opp brukerens inn-data */

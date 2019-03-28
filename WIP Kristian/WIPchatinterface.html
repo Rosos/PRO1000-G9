@@ -24,13 +24,18 @@
 		</header>
 		<div class="mainContent">
 			<div class="chatInfo">
-
+				<p>Her kan du melde deg på kurs ved hjelp av botten vår.</p>
 			</div>
 			<div class="chatbot">
 				<div class="chatBox">
+					<div class="languageSelect" id="languageSelect" style="display: inline-block;">
+						Velg ditt språk / Select your language
+						<br>
+						<div><a class="chatBubble leftBubble centeredBubble" onclick="languageSelect('no')">Norsk</a><a class="chatBubble rightBubble centeredBubble" onclick="languageSelect('en')">English</a></div>
+					</div>
 				</div>
 				<div class="input">
-					<input id="input" type="text" placeholder="Si hei!"> <button id="rec"
+					<input id="input" type="text" placeholder="" disabled> <button id="rec"
 						style="border-radius: 5px;">send</button>
 				</div>
 			</div>

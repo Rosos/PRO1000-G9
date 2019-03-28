@@ -83,70 +83,36 @@ a.lastLink {
 }
 
 .mainContent {
+	width: 80%;
 	height: 100%;
-	background-color: white;
+	margin: auto;
+	text-align: center;
+	background-color: black;
 }
 
-@media screen and (max-width: 1300px) {
-	.logo {
-		margin-left: 1.7em;
-	}
-	.headerRight {
-		margin-right: 2em;
-	}
-}
-
-@media screen and (max-width: 1000px) {
-	header {
-		height: 8em;
-		text-align: center
-	}
-	.logo {
-		float: none;
-		display: inline-block;
-		clear: both;
-	}
-	a.tittel {
-		display: inline-block;
-	}
-	.headerRight {
-		float: none;
-		clear: both;
-		display: inline-block;
-	}
-}
-
-@media screen and (max-width: 605px) {
-	header {
-		height: 5em;
-	}
-	.logo {
-		display: none;
-	}
-	.headerRight {
-		margin-left: 0;
-		margin-right: 0;
-	}
-	.firstLink {
-		padding-left: 0;
-	}
-	a.headerLinks {
-		font-size: 1.7em;
-		line-height: 1em;
-	}
+.chatInfo {
+	width: 42.5%;
+	height: 200px;
+	float: left;
+	background-color: red;
+	margin: 2%;
+	margin-right: 1%;
+	padding: 10px;
 }
 
 
 /** Chat-vindu **/
 .chatbot {
 /*	position: relative;
-*/	width: 80%;
+*/	
+	float: right;
+	width: 50%;
 	background-color: #ededed;
 	border-style: none;
 	border-width: 5px;
 	border-radius: 5px;
-	margin-left: 10%;
-	margin-top: 1%;
+	margin: 2%;
+	margin-left: 1%;
 }
 
 div.chatBox {
@@ -185,12 +151,31 @@ div.chatBox {
 
 
 .chatBubble {
-	display: block;
+	display: inline-block;
 	padding: 10px;
 	border-radius: 10px;
 	margin-top: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
+	background-color: #3298a3;
+	color: white;
+}
+
+.chatBubble > a {
+	padding: 20px;
+}
+
+.centeredBubble {
+	cursor: pointer;
+	padding: 10px;
+}
+
+.leftBubble {
+	float: left;
+}
+
+.rightBubble {
+	float: right;
 }
 
 .userInput {
@@ -270,4 +255,53 @@ li.meetingListItem {
 button { 
 	display: none;
 	width: 50px; 
+}
+
+@media screen and (max-width: 1300px) {
+	.logo {
+		margin-left: 1.7em;
+	}
+	.headerRight {
+		margin-right: 2em;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	header {
+		height: 8em;
+		text-align: center
+	}
+	.logo {
+		float: none;
+		display: inline-block;
+		clear: both;
+	}
+	a.tittel {
+		display: inline-block;
+	}
+	.headerRight {
+		float: none;
+		clear: both;
+		display: inline-block;
+	}
+}
+
+@media screen and (max-width: 605px) {
+	header {
+		height: 5em;
+	}
+	.logo {
+		display: none;
+	}
+	.headerRight {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.firstLink {
+		padding-left: 0;
+	}
+	a.headerLinks {
+		font-size: 1.7em;
+		line-height: 1em;
+	}
 }

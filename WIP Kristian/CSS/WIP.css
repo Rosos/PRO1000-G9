@@ -82,6 +82,11 @@ a.lastLink {
 	padding-right: 0px;
 }
 
+.mainContent {
+	height: 100%;
+	background-color: white;
+}
+
 @media screen and (max-width: 1300px) {
 	.logo {
 		margin-left: 1.7em;
@@ -134,8 +139,8 @@ a.lastLink {
 
 /** Chat-vindu **/
 .chatbot {
-	position: relative;
-	width: 80%;
+/*	position: relative;
+*/	width: 80%;
 	background-color: #ededed;
 	border-style: none;
 	border-width: 5px;

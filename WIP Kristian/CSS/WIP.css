@@ -153,12 +153,15 @@ div.chatBox {
 .chatBubble {
 	display: inline-block;
 	padding: 10px;
-	border-radius: 10px;
+	border-radius: 3px;
 	margin-top: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
+	margin-bottom: 15px;
 	background-color: #3298a3;
 	color: white;
+	max-width: 60%;
+	text-align: left;
 }
 
 .chatBubble > a {
@@ -209,7 +212,7 @@ div.chatBox {
 	color: white;
 	padding: 10px;
 	padding-top: 15px;
-	border-radius: 10px;
+	border-radius: 3px;
 	margin-top: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
@@ -223,16 +226,19 @@ div.chatBox {
 	color: black;
 }
 
-#yesInput {
-	padding: 15px;
-	padding-bottom: 25px;
-	border-right: solid white 2px;
-	cursor: pointer;
+.richMessageContainer {
+	float: right;
+	display: block;
 }
 
-#noInput {
-	padding: 15px;
+.richMessageStyle {
+	margin: 20px;
 	cursor: pointer;
+	background-color: #3298a3;
+	border-radius: 3px;
+	color: white;
+	padding: 10px;
+	width: 150px;
 }
 
 li.meetingListItem {
@@ -241,9 +247,6 @@ li.meetingListItem {
 }
 
 .meetingListItem {
-	border-bottom: solid white 2px;
-	padding: 15px;
-	padding-left: 30px;
 	cursor: pointer;
 /*				width: 100%;
 */			}

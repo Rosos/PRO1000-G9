@@ -4,10 +4,12 @@
 		var baseUrl = "https://api.api.ai/v1/";
 		var kurs;
 		var language = "en";
+		var input = document.getElementById('input');
+
 
 		function languageSelect(lang) {
-			language = lang;
 			var input = document.getElementById('input');
+			language = lang;
 			if ( language == "en" ) {
 				input.placeholder = "Say hello!";
 			}
@@ -65,38 +67,57 @@
 		}
 
 		function clickRichMessage(reply) {
+			var input = document.getElementById('input');
 			let query = reply;
 			// id.innerHTML = reply;
 			send(query);
+			input.disabled = false;
 		}
 
 		function kursReg(course) {
 			kurs = course;
 		}
 
+		function richMessageList() {
+			var listeString;
+			for ( i = 0; i < meetingArray.length; i++ ) {
+				listeString += '<li class="richMessageStyle meetingListItem" onclick="clickRichMessage(meetingArray[' +
+								 i + ']), kursReg(meetingArray[' + i + '])">' + meetingArray[i] + '</li>';
+			}
+			console.log(listeString);
+			return listeString;
+		}
+
 		var Ja = "Yes";
 		var Nei = "No";
 		// $(document).ready(function() {
 		function setResponse(val) {
+			var input = document.getElementById('input');
+
 			var $chatBox = $('div.chatBox');
 			var richmessageInputX;
 			var keyword;
 
+			//var richMessageContainer = ('<div class="richMessageContainer">' + richMessageInputX + '</div>');
+
+
 			// rich message html for Y/N
-			var richmessageInputYN = ('<span id="yesInput" onclick="clickRichMessage(Ja)">Yes</span>' +
-				'<span id="noInput" onclick="clickRichMessage(Nei)">No</span><br><br>');
+			var richmessageInputYN = ('<div class="richMessageContainer"><span id="yesInput" class="richMessageStyle" onclick="clickRichMessage(Ja)">Yes</span>' +
+				'<span id="noInput" class="richMessageStyle" onclick="clickRichMessage(Nei)">No</span></div><br><br>');
 
 			// rich message html for lists
-			var richmessageInputList = (
-				'<ul class="meetingList"><li class="meetingListItem" onclick="clickRichMessage(meetingArray[0]), kursReg(meetingArray[0])">' +
-				meetingArray[0] +
-				'</li><li class="meetingListItem" onclick="clickRichMessage(meetingArray[1]), kursReg(meetingArray[1])">' +
-				meetingArray[1] +
-				'</li><li class="meetingListItem" onclick="clickRichMessage(meetingArray[2]), kursReg(meetingArray[2])">' +
-				meetingArray[2] +
-				'</li><li class="meetingListItem meetingListItemLast" onclick="clickRichMessage(meetingArray[3]), kursReg(meetingArray[3])">' +
-				meetingArray[3] + '</li></ul>'
-			);
+			// var richMessageInputList = (
+			// 	'<div class="richMessageContainer"><ul class="meetingList"><li class="meetingListItem" onclick="clickRichMessage(meetingArray[0]), kursReg(meetingArray[0])">' +
+			// 	meetingArray[0] +
+			// 	'</li><li class="richMessageStyle meetingListItem" onclick="clickRichMessage(meetingArray[1]), kursReg(meetingArray[1])">' +
+			// 	meetingArray[1] +
+			// 	'</li><li class="meetingListItem" onclick="clickRichMessage(meetingArray[2]), kursReg(meetingArray[2])">' +
+			// 	meetingArray[2] +
+			// 	'</li><li class="meetingListItem meetingListItemLast" onclick="clickRichMessage(meetingArray[3]), kursReg(meetingArray[3])">' +
+			// 	meetingArray[3] + '</li></ul></div>'
+			// );
+
+			var richMessageInputList = ( '<div class="richMessageContainer"><ul class="meetingList">' + richMessageList() + '</ul></div>' );
 
 			console.log(val.result.fulfillment);
 			var reply = val.result.fulfillment.speech.toString();
@@ -114,18 +135,20 @@
 				var replyLine = replyArray.join(' ');
 
 				if (keyword === "#melde") {
-					$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br>');
+					$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br><br>');
 					richmessageInputX = richmessageInputYN;
-					var $richmessage = $('<div class="richMessage" id="richMessage">' + richmessageInputX +
-						'</div><br><br><br><br><br>');
+					var $richmessage = $(richmessageInputX);
 					$chatBox.append($richmessage);
+					// input.disabled = true;
 				} 
 				else if (keyword === "#kurs") {
 					$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br><br><br>');
-					richmessageInputX = richmessageInputList;
+					richmessageInputX = richMessageInputList;
 					var $richmessage = $('<div class="richMessage">' + richmessageInputX +
 						'</div><br><br><br><br><br><br><br>');
 					$chatBox.append($richmessage);
+
+					// input.disabled = true;
 
 					$(".chatBox").stop().animate({ /* Auto-scroll */
 						scrollTop: $(".chatBox")[0].scrollHeight

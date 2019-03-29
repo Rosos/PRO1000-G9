@@ -177,6 +177,33 @@ div.chatBox {
 	  transition: 0.5s;
 }
 
+.userInputContainer {
+	float: right;
+	clear: left;
+	position: relative;
+	max-width: 60%;
+}
+
+.replyContainer {
+	float: left;
+	clear: right;
+	position: relative;
+	max-width: 65%;
+}
+
+.userPic {
+	max-width: 35px;
+	position: absolute;
+	top: 5px;
+}
+
+.rightPic {
+	right: 5px;
+}
+
+.leftPic {
+	left: 5px;
+}
 
 .chatBubble {
 	display: inline-block;
@@ -188,7 +215,7 @@ div.chatBox {
 	margin-bottom: 15px;
 	background-color: #3298a3;
 	color: white;
-	max-width: 60%;
+	max-width: 100%;
 	text-align: left;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -257,7 +284,7 @@ div.chatBox {
 .responseData {
 	float: left;
 	clear: right;
-	background-color: #c9c9c9;
+	background-color: #b2b2b2;
 	color: black;
 	border-top-left-radius: 0px;
 

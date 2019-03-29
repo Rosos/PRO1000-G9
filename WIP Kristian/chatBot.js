@@ -28,7 +28,7 @@
 				if (event.which == 13) {
 					var $chatBox = $('div.chatBox');
 					var userInput = $('input').val();
-					var $span = $('<span class="chatBubble userInput sb1">' + userInput + '</span><br><br><br>');
+					var $span = $('<div class="userInputContainer"><img class="userPic rightPic" src="css/img/userpicdark.png"><br><br><span class="chatBubble userInput sb1">' + userInput + '</span></div><br><br><br>');
 					var userInputSpans = $('span.userInput');
 					console.log('data-js-reply-' + userInputSpans.length, userInput);
 					// $chatBox.attr('data-js-reply-'+userInputSpans.length, userInput);
@@ -78,7 +78,7 @@
 			input.disabled = false;
 			input.style.opacity = "1.0";
 			x[richMessageIndex].style.display = "none";
-			$chatBox.append('<span class="chatBubble userInput sb1">' + query + '</span><br><br><br>');
+			$chatBox.append('<div class="userInputContainer"><img class="userPic rightPic" src="css/img/userpicdark.png"><br><br><span class="chatBubble userInput sb1">' + query + '</span></div><br><br><br>');
 			input.focus();
 			if ( richMessageIndex == 0 )
 						richMessageIndex++;
@@ -147,7 +147,7 @@
 				var replyLine = replyArray.join(' ');
 
 				if (keyword === "#melde") {
-					$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br>');
+					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><br><br><span class="chatBubble responseData">' + replyLine + '</span></div><br><br>');
 					if ( language == "en" ) {
 						richmessageInputX = richmessageInputynEN;
 					}
@@ -167,7 +167,7 @@
 
 				} 
 				else if (keyword === "#kurs") {
-					$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br><br><br>');
+					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><br><br><span class="chatBubble responseData">' + replyLine + '</span></div><br><br><br><br>');
 					richmessageInputX = richMessageInputList;
 					var $richmessage = $('<div class="richMessageContainer">' + richmessageInputX +
 						'</div>');
@@ -185,17 +185,21 @@
 
 				} 
 				else if (keyword === "#registrert") {
-					replyArray.push("for the course " + kurs + ".");
+					if ( language == "en" )
+						replyArray.push("for the course " + kurs + ".");
+					else
+						replyArray.push("og påmeldt " + kurs + "-kurset vårt.");
+
 					replyLine = replyArray.join(' ');
-					$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br>');
+					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><br><br><span class="chatBubble responseData">' + replyLine + '</span></div><br><br>');
 				} 
 				else {
-					$(".chatBox").append('<span class="chatBubble responseData">' + replyLine + '</span><br><br>');
+					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><br><br><span class="chatBubble responseData">' + replyLine + '</span></div><br><br>');
 				}
 			} 
 			else {
-				$(".chatBox").append('<span class="chatBubble responseData">' + val.result.fulfillment.speech +
-					'</span><br><br>');
+				$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><br><br><span class="chatBubble responseData">' + val.result.fulfillment.speech +
+					'</span></div><br><br>');
 			}
 
 			$(".chatBox").stop().animate({ /* Auto-scroll */

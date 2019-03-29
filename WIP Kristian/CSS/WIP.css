@@ -6,6 +6,7 @@
 
 body {
 	background-color: white;
+	min-width:450px;
 }
 
 .main {
@@ -336,6 +337,9 @@ button {
 	.chatInfo {
 		font-size: 1.5em;
 	}
+	.mainContent {
+		width: 95%;
+	}
 }
 
 @media screen and (max-width: 1000px) {
@@ -363,6 +367,12 @@ button {
 	.centeredBubble {
 		font-size: 1.2em;
 	}
+	.mainContent {
+		width: 98%;
+	}
+	.languageSelect > span {
+		font-size: .8em;
+	}
 }
 
 @media screen and (max-width: 605px) {
@@ -375,6 +385,7 @@ button {
 	.headerRight {
 		margin-left: 0;
 		margin-right: 0;
+		font-size: .85em;
 	}
 	.firstLink {
 		padding-left: 0;
@@ -388,13 +399,18 @@ button {
 	}
 	.mainContent {
 		width: 100%;
+		padding: 0px;
+		height: 100%;
 	}
 	.chatBot {
+		padding: 0;
 		width: 100%;
 		padding: 0px;
-		margin-left: 1%;
-	}
+		margin: 0;	}
 	.chatBox {
 		width: 90%;
+	}
+	.languageSelect > span {
+		font-size: 1.1em;
 	}
 }

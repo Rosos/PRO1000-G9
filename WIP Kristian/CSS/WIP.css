@@ -5,7 +5,7 @@
 }
 
 body {
-	background-color: lightblue;
+	background-color: white;
 }
 
 .main {
@@ -87,17 +87,21 @@ a.lastLink {
 	height: 100%;
 	margin: auto;
 	text-align: center;
-	background-color: black;
+	background-color: white;
 }
 
 .chatInfo {
 	width: 42.5%;
 	height: 200px;
 	float: left;
-	background-color: red;
 	margin: 2%;
 	margin-right: 1%;
-	padding: 10px;
+	padding: 20px;
+	font-size: 1.6em;
+	line-height: 1.5em;
+	font-family: "tahoma";
+	text-align: left;
+	color: #3a3a3a;
 }
 
 
@@ -107,7 +111,7 @@ a.lastLink {
 */	
 	float: right;
 	width: 50%;
-	background-color: #ededed;
+	background-color: white;
 	border-style: none;
 	border-width: 5px;
 	border-radius: 5px;
@@ -118,29 +122,53 @@ a.lastLink {
 div.chatBox {
 	width: 100%;
 	height: 67%;
+	min-height: 600px;
 	overflow: auto;
 	margin: auto;
 	font-size: 20px;
 	font-family: "tahoma";
+	position: relative;
+	background-color: #e0e0e0;
+	border-radius: 7.5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.languageSelect {
+	width: 100%;
+	position: absolute;
+	bottom: 20%;
+	left: 0;
+	text-align: center;
+}
+
+.inputKeyboard {
+	float: left;
+	width: auto;
+	max-width: 1em;
+	min-width: 1em;
 }
 
 #input {
-	width: 100%;
+/*	float: right;
+*/	width: 100%;
 	height: 50px;
 	margin: auto;
+	margin-top: 15px;
 	font-size: 20px;
 	border: none;
-	border-bottom: 2px solid black;
-	background-color: #ededed;
+	border-radius: 7.5px;
+/*	background-color: #ededed;*/
+	background-color: #e0e0e0;
 	font-family: "tahoma";
 	-webkit-transition: 0.5s;
-	  transition: 0.5s;
-	  background-image: url('bilder/keyboard.png');
-	  background-position: 15px 0px;
-	  background-repeat: no-repeat;
-	  background-size: 6%;
-	  padding-left: 80px;
-	  padding-top: 10px;
+	transition: 0.5s;
+	background-image: url('img/KeyBoard.png');
+	background-position: 15px 0px;
+	background-repeat: no-repeat;
+	background-size: 50px;
+	padding-left: 75px;
+	padding-top: 0px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #input:focus {
@@ -153,7 +181,7 @@ div.chatBox {
 .chatBubble {
 	display: inline-block;
 	padding: 10px;
-	border-radius: 3px;
+	border-radius: 10px;
 	margin-top: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
@@ -162,6 +190,7 @@ div.chatBox {
 	color: white;
 	max-width: 60%;
 	text-align: left;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .chatBubble > a {
@@ -170,15 +199,20 @@ div.chatBox {
 
 .centeredBubble {
 	cursor: pointer;
+	font-size: 1.8em;
 	padding: 10px;
+	color: #3a3a3a;
 }
 
 .leftBubble {
 	float: left;
+	margin-left: 20%;
+	clear: left;
 }
 
 .rightBubble {
 	float: right;
+	margin-right: 20%;
 }
 
 .userInput {
@@ -188,9 +222,10 @@ div.chatBox {
 	clear: right;
 	background-color: #3298a3;
 	color: white;
+	border-top-right-radius: 0px;
 }
 
-.sb1:before {
+/*.sb1:before {
 	content: "";
 	width: 0px;
 	height: 0px;
@@ -201,7 +236,7 @@ div.chatBox {
 	border-bottom: 10px solid transparent;
 	right: -20px;
 	top: 6px;
-}
+}*/
 
 .richMessage {
 	display: block;
@@ -212,7 +247,7 @@ div.chatBox {
 	color: white;
 	padding: 10px;
 	padding-top: 15px;
-	border-radius: 3px;
+	border-radius: 0px;
 	margin-top: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
@@ -224,21 +259,25 @@ div.chatBox {
 	clear: right;
 	background-color: #c9c9c9;
 	color: black;
+	border-top-left-radius: 0px;
+
 }
 
 .richMessageContainer {
 	float: right;
 	display: block;
+	clear: left;
 }
 
 .richMessageStyle {
 	margin: 20px;
 	cursor: pointer;
 	background-color: #3298a3;
-	border-radius: 3px;
+	border-radius: 15px;
 	color: white;
 	padding: 10px;
 	width: 150px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 li.meetingListItem {
@@ -267,6 +306,9 @@ button {
 	.headerRight {
 		margin-right: 2em;
 	}
+	.chatInfo {
+		font-size: 1.5em;
+	}
 }
 
 @media screen and (max-width: 1000px) {
@@ -287,6 +329,13 @@ button {
 		clear: both;
 		display: inline-block;
 	}
+	.chatInfo {
+		font-size: 1.4em;
+		line-height: 1.2em;
+	}
+	.centeredBubble {
+		font-size: 1.2em;
+	}
 }
 
 @media screen and (max-width: 605px) {
@@ -306,5 +355,19 @@ button {
 	a.headerLinks {
 		font-size: 1.7em;
 		line-height: 1em;
+	}
+	.chatInfo {
+		display: none;
+	}
+	.mainContent {
+		width: 100%;
+	}
+	.chatBot {
+		width: 100%;
+		padding: 0px;
+		margin-left: 1%;
+	}
+	.chatBox {
+		width: 90%;
 	}
 }

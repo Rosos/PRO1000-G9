@@ -200,6 +200,7 @@ div.chatBox {
 
 .rightPic {
 	right: 5px;
+	display: none;
 }
 
 .leftPic {
@@ -282,13 +283,17 @@ div.chatBox {
 	line-height: 18px;
 }
 
+.lineBreakDiv {
+	clear: both;
+	padding-bottom: 35px;
+}
+
 .responseData {
 	float: left;
 	clear: right;
 	background-color: #b2b2b2;
 	color: black;
 	border-top-left-radius: 0px;
-
 }
 
 .richMessageContainer {
@@ -298,14 +303,20 @@ div.chatBox {
 }
 
 .richMessageStyle {
-	margin: 20px;
+	margin-right: 10px;
+	margin-bottom: 10px;
 	cursor: pointer;
 	background-color: #3298a3;
-	border-radius: 15px;
+	border-radius: 7px;
 	color: white;
 	padding: 10px;
 	width: 150px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.pointer {
+	max-width: 40px;
+	clear: both;
+	text-align: center;
 }
 
 li.meetingListItem {
@@ -325,6 +336,10 @@ li.meetingListItem {
 button { 
 	display: none;
 	width: 50px; 
+}
+
+.userInputContainer > .lineBreakDiv {
+	display: none;
 }
 
 @media screen and (max-width: 1300px) {
@@ -406,9 +421,15 @@ button {
 		padding: 0;
 		width: 100%;
 		padding: 0px;
-		margin: 0;	}
-	.chatBox {
-		width: 90%;
+		margin: 0;	
+		border-radius: 0px;
+	}
+	div.chatBox {
+		width: 100%;
+		border-radius: 0px;
+	}
+	#input {
+		border-radius: 0px;
 	}
 	.languageSelect > span {
 		font-size: 1.1em;

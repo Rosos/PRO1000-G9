@@ -28,7 +28,7 @@
 				if (event.which == 13) {
 					var $chatBox = $('div.chatBox');
 					var userInput = $('input').val();
-					var $span = $('<div class="userInputContainer"><img class="userPic rightPic" src="css/img/userpicdark.png"><br><br><span class="chatBubble userInput sb1">' + userInput + '</span></div><br><br><br>');
+					var $span = $('<div class="userInputContainer"><img class="userPic rightPic" src="css/img/userpicdark.png"><div class="lineBreakDiv"></div><span class="chatBubble userInput sb1">' + userInput + '</span></div> <br>');
 					var userInputSpans = $('span.userInput');
 					console.log('data-js-reply-' + userInputSpans.length, userInput);
 					// $chatBox.attr('data-js-reply-'+userInputSpans.length, userInput);
@@ -78,7 +78,7 @@
 			input.disabled = false;
 			input.style.opacity = "1.0";
 			x[richMessageIndex].style.display = "none";
-			$chatBox.append('<div class="userInputContainer"><img class="userPic rightPic" src="css/img/userpicdark.png"><br><br><span class="chatBubble userInput sb1">' + query + '</span></div><br><br><br>');
+			$chatBox.append('<div class="userInputContainer"><img class="userPic rightPic" src="css/img/userpicdark.png"><div class="lineBreakDiv"> </div><span class="chatBubble userInput sb1">' + query + '</span></div><div class="lineBreakDiv"> </div>');
 			input.focus();
 			if ( richMessageIndex == 0 )
 						richMessageIndex++;
@@ -113,9 +113,9 @@
 
 			// rich message html for Y/N
 			var richmessageInputynEN = ('<div class="richMessageContainer"><span id="yesInput" class="richMessageStyle" onclick="clickRichMessage(yn[2])">Yes</span>' +
-				'<span id="noInput" class="richMessageStyle" onclick="clickRichMessage(yn[3])">No</span></div><br><br>');
+				'<span id="noInput" class="richMessageStyle" onclick="clickRichMessage(yn[3])">No</span></div> ');
 			var richmessageInputynNO = ('<div class="richMessageContainer"><span id="yesInput" class="richMessageStyle" onclick="clickRichMessage(yn[0])">Ja</span>' +
-				'<span id="noInput" class="richMessageStyle" onclick="clickRichMessage(yn[1])">Nei</span></div><br><br>');
+				'<span id="noInput" class="richMessageStyle" onclick="clickRichMessage(yn[1])">Nei</span></div> ');
 
 			// rich message html for lists
 			// var richMessageInputList = (
@@ -129,7 +129,7 @@
 			// 	meetingArray[3] + '</li></ul></div>'
 			// );
 
-			var richMessageInputList = ( '<div class="richMessageContainer"><ul class="meetingList">' + richMessageList() + '</ul></div><br><br><br>' );
+			var richMessageInputList = ( '<div class="richMessageContainer"><ul class="meetingList">' + richMessageList() + '</ul></div> <br>' );
 
 			console.log(val.result.fulfillment);
 			var reply = val.result.fulfillment.speech.toString();
@@ -147,7 +147,7 @@
 				var replyLine = replyArray.join(' ');
 
 				if (keyword === "#melde") {
-					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><br><br><span class="chatBubble responseData">' + replyLine + '</span></div><br><br>');
+					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + replyLine + '</span></div> ');
 					if ( language == "en" ) {
 						richmessageInputX = richmessageInputynEN;
 					}
@@ -167,7 +167,7 @@
 
 				} 
 				else if (keyword === "#kurs") {
-					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><br><br><span class="chatBubble responseData">' + replyLine + '</span></div><br><br><br><br>');
+					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + replyLine + '</span></div> ');
 					richmessageInputX = richMessageInputList;
 					var $richmessage = $('<div class="richMessageContainer">' + richmessageInputX +
 						'</div>');
@@ -191,15 +191,15 @@
 						replyArray.push("og påmeldt " + kurs + "-kurset vårt.");
 
 					replyLine = replyArray.join(' ');
-					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><br><br><span class="chatBubble responseData">' + replyLine + '</span></div><br><br>');
+					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + replyLine + '</span></div> ');
 				} 
 				else {
-					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><br><br><span class="chatBubble responseData">' + replyLine + '</span></div><br><br>');
+					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + replyLine + '</span></div> ');
 				}
 			} 
 			else {
-				$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><br><br><span class="chatBubble responseData">' + val.result.fulfillment.speech +
-					'</span></div><br><br>');
+				$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + val.result.fulfillment.speech +
+					'</span></div> ');
 			}
 
 			$(".chatBox").stop().animate({ /* Auto-scroll */

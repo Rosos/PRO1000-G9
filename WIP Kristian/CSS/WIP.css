@@ -7,6 +7,7 @@
 body {
 	background-color: white;
 	min-width:450px;
+	height: 100%;
 }
 
 .main {
@@ -336,6 +337,11 @@ li.meetingListItem {
 button { 
 	display: none;
 	width: 50px; 
+}
+
+.animateBubble {
+	-webkit-animation-name: typingAnim;
+	-webkit-animation-duration: 10s;
 }
 
 .userInputContainer > .lineBreakDiv {

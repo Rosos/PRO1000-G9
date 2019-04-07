@@ -8,13 +8,18 @@
 		var richMessageIndex = 0;
 
 
-		function languageSelect(lang) {
+		function languageSelect(lang) { /* velger språk for samtalen */
 			var input = document.getElementById('input');
+			var $chatBox = $('div.chatBox');
 			language = lang;
 			if ( language == "en" ) {
+				send("hello");
+				// $(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">Hello! What can I do for you?</span></div> ');
 				input.placeholder = "Type here!";
 			}
 			else if ( language == "no" ) {
+				send("hei");
+				// $(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">Hei! Hva kan jeg hjelpe deg med?</span></div> ');
 				input.placeholder = "Skriv her!";
 			}
 			input.style.backgroundColor = "#f4f4f4";
@@ -22,6 +27,18 @@
 			document.getElementById('languageSelect').style.display = "none";
 			input.focus();
 		}
+
+		function botIsTyping() {
+			var $chatBox = $('div.chatBox');
+			$(".chatBox").append('<div class="replyContainer"><span class="responseData chatBubble animateBubble"><span class="firstDot">.</span><span class="secondDot">.</span><span class="thirdDot">.</span></span></div>')
+		}
+
+		function ValidateEmail(mail) {
+ 			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
+    			return (true)
+  			}
+   			return (false)
+}
 
 		$(document).ready(function () { /* Funksjon for å sette opp brukerens inn-data */
 			$("#input").keypress(function (event) {
@@ -148,7 +165,7 @@
 
 				if (keyword === "#melde") {
 					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + replyLine + '</span></div> ');
-					if ( language == "en" ) {
+					if ( language == "en" ) { /* if-setninger for å gi riktig språk på richmessages */
 						richmessageInputX = richmessageInputynEN;
 					}
 					else {
@@ -158,7 +175,8 @@
 					$chatBox.append($richmessage);
 					input.disabled = true;
 					input.style.opacity = "0.35";
-					if ( richMessageIndex > 0 )
+
+					if ( richMessageIndex > 0 ) /* øker en index-variabel for richmessages slik at  */
 						richMessageIndex++;
 
 					$(".chatBox").stop().animate({ /* Auto-scroll */
@@ -201,6 +219,7 @@
 				$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + val.result.fulfillment.speech +
 					'</span></div> ');
 			}
+
 
 			$(".chatBox").stop().animate({ /* Auto-scroll */
 				scrollTop: $(".chatBox")[0].scrollHeight

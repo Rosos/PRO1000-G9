@@ -3,9 +3,11 @@
 		var accessToken = "40d24283d3324f6e8294d648bd3b691a";
 		var baseUrl = "https://api.api.ai/v1/";
 		var kurs;
+		var keyword;
 		var language = "en";
 		var input = document.getElementById('input');
 		var richMessageIndex = 0;
+		var animatedBubbleIndex = 0;
 
 
 		function languageSelect(lang) { /* velger språk for samtalen */
@@ -13,12 +15,12 @@
 			var $chatBox = $('div.chatBox');
 			language = lang;
 			if ( language == "en" ) {
-				send("hello");
+				send("wqoieoieowieowieo23232oi3oioioioi");
 				// $(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">Hello! What can I do for you?</span></div> ');
 				input.placeholder = "Type here!";
 			}
 			else if ( language == "no" ) {
-				send("hei");
+				send("wqoieoieowieowieo23232oi3oioioioi");
 				// $(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">Hei! Hva kan jeg hjelpe deg med?</span></div> ');
 				input.placeholder = "Skriv her!";
 			}
@@ -30,19 +32,33 @@
 
 		function botIsTyping() {
 			var $chatBox = $('div.chatBox');
-			$(".chatBox").append('<div class="replyContainer"><span class="responseData chatBubble animateBubble"><span class="firstDot">.</span><span class="secondDot">.</span><span class="thirdDot">.</span></span></div>')
+			var animatedBubbleContainer = document.getElementsByClassName("animatedIndex");
+			$(".chatBox").append('<div class="replyContainer animatedIndex"><span class="responseData chatBubble animateBubble"><div class="dotContainer"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div></div>');
+			// animatedBubbleIndex = $(".replyContainer:last").index();
+			animatedBubbleContainer[animatedBubbleIndex].style.display = "none";
+			animatedBubbleIndex++;
 		}
 
 		function ValidateEmail(mail) {
- 			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value)) {
+ 			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
     			return (true)
   			}
    			return (false)
-}
+		}
+		function CheckSpace(event) {
+			var x = document.getElementById('input').value;
+  			if(event.which ==32) {
+  				if ( x == "" ) {
+					event.preventDefault();
+      				return false;
+      			}
+   			}
+		}
 
 		$(document).ready(function () { /* Funksjon for å sette opp brukerens inn-data */
 			$("#input").keypress(function (event) {
-				if (event.which == 13) {
+				var x = document.getElementById('input').value;
+				if (event.which == 13 && x != "") {
 					var $chatBox = $('div.chatBox');
 					var userInput = $('input').val();
 					var $span = $('<div class="userInputContainer"><img class="userPic rightPic" src="css/img/userpicdark.png"><div class="lineBreakDiv"></div><span class="chatBubble userInput sb1">' + userInput + '</span></div> <br>');
@@ -55,11 +71,25 @@
 					event.preventDefault();
 					let query = $('input').val();
 					$('input').val('');
-					send(query);
-					console.log('data-js-reply-' + userInputSpans.length, userInput);
-					$(".chatBox").stop().animate({ /* Auto-scroll */
-						scrollTop: $(".chatBox")[0].scrollHeight
-					}, 1000);
+					if ( keyword === "#epost" ) {
+						alert(keyword);
+						if ( ValidateEmail(userInput) ) {
+							send(query);
+							console.log('data-js-reply-' + userInputSpans.length, userInput);
+							$(".chatBox").stop().animate({ /* Auto-scroll */
+							scrollTop: $(".chatBox")[0].scrollHeight
+							}, 1000);
+						} else {
+							alert("um nei");
+						}
+
+					} else {
+						send(query);
+						console.log('data-js-reply-' + userInputSpans.length, userInput);
+						$(".chatBox").stop().animate({ /* Auto-scroll */
+							scrollTop: $(".chatBox")[0].scrollHeight
+						}, 1000);
+					}
 				}
 			});
 		});
@@ -83,6 +113,7 @@
 					setResponse(data);
 				}
 			});
+			botIsTyping();
 		}
 
 		function clickRichMessage(reply) {
@@ -123,8 +154,6 @@
 
 			var $chatBox = $('div.chatBox');
 			var richmessageInputX;
-			var keyword;
-
 			//var richMessageContainer = ('<div class="richMessageContainer">' + richMessageInputX + '</div>');
 
 

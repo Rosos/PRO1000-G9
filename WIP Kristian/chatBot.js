@@ -30,14 +30,18 @@
 			input.focus();
 		}
 
-		function botIsTyping() {
-			var $chatBox = $('div.chatBox');
+		var lol = function hideAnimatedBox() {
 			var animatedBubbleContainer = document.getElementsByClassName("animatedIndex");
-			$(".chatBox").append('<div class="replyContainer animatedIndex"><span class="responseData chatBubble animateBubble"><div class="dotContainer"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div></div>');
-			// animatedBubbleIndex = $(".replyContainer:last").index();
 			animatedBubbleContainer[animatedBubbleIndex].style.display = "none";
 			animatedBubbleIndex++;
 		}
+		function botIsTyping() {
+			var $chatBox = $('div.chatBox');
+			$(".chatBox").append('<div class="replyContainer animatedIndex"><span class="responseData chatBubble animateBubble"><div class="dotContainer"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div></div>');
+			// animatedBubbleIndex = $(".replyContainer:last").index();
+			setTimeout(lol, 3000);
+		}
+
 
 		function ValidateEmail(mail) {
  			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
@@ -113,7 +117,7 @@
 					setResponse(data);
 				}
 			});
-			botIsTyping();
+			// botIsTyping();
 		}
 
 		function clickRichMessage(reply) {

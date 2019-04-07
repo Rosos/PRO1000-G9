@@ -75,25 +75,25 @@
 					event.preventDefault();
 					let query = $('input').val();
 					$('input').val('');
-					if ( keyword === "#epost" ) {
-						alert(keyword);
-						if ( ValidateEmail(userInput) ) {
-							send(query);
-							console.log('data-js-reply-' + userInputSpans.length, userInput);
-							$(".chatBox").stop().animate({ /* Auto-scroll */
-							scrollTop: $(".chatBox")[0].scrollHeight
-							}, 1000);
-						} else {
-							alert("um nei");
-						}
+					// if ( keyword === "#epost" ) {
+					// 	alert(keyword);
+					// 	if ( ValidateEmail(userInput) ) {
+							// send(query);
+							// console.log('data-js-reply-' + userInputSpans.length, userInput);
+							// $(".chatBox").stop().animate({ /* Auto-scroll */
+							// scrollTop: $(".chatBox")[0].scrollHeight
+							// }, 1000);
+						// } else {
+						// 	alert("um nei");
+						// }
 
-					} else {
+					// } else {
 						send(query);
 						console.log('data-js-reply-' + userInputSpans.length, userInput);
 						$(".chatBox").stop().animate({ /* Auto-scroll */
 							scrollTop: $(".chatBox")[0].scrollHeight
 						}, 1000);
-					}
+					// }
 				}
 			});
 		});

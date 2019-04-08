@@ -367,10 +367,10 @@ button {
 	margin: 5px;
 	display: block;	
 	float: right;
-	width: 13px;
-	height: 13px;
+	width: 8px;
+	height: 8px;
 	border-radius: 50px;
-	background-color: black;
+	background-color: #3a3a3a;
 	position: relative;
 	top: 0px;
 }

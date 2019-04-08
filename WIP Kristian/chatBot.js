@@ -30,25 +30,13 @@
 			input.focus();
 		}
 
-		var lol = function hideAnimatedBox() {
-			var animatedBubbleContainer = document.getElementsByClassName("animatedIndex");
-			animatedBubbleContainer[animatedBubbleIndex].style.display = "none";
-			animatedBubbleIndex++;
-		}
-		function botIsTyping() {
-			var $chatBox = $('div.chatBox');
-			$(".chatBox").append('<div class="replyContainer animatedIndex"><span class="responseData chatBubble animateBubble"><div class="dotContainer"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div></div>');
-			// animatedBubbleIndex = $(".replyContainer:last").index();
-			setTimeout(lol, 3000);
-		}
+		// function ValidateEmail(mail) {
+		// 	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+		// 		return (true)
+		// 	}
+		// 	return (false)
+		// }
 
-
-		function ValidateEmail(mail) {
- 			if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-    			return (true)
-  			}
-   			return (false)
-		}
 		function CheckSpace(event) {
 			var x = document.getElementById('input').value;
   			if(event.which ==32) {
@@ -83,7 +71,7 @@
 							// $(".chatBox").stop().animate({ /* Auto-scroll */
 							// scrollTop: $(".chatBox")[0].scrollHeight
 							// }, 1000);
-						// } else {
+						// } else {|
 						// 	alert("um nei");
 						// }
 
@@ -149,6 +137,26 @@
 			}
 			console.log(listeString);
 			return listeString;
+		}
+
+		var lol = function hideAnimatedBox() {
+			var animatedBubbleContainer = document.getElementsByClassName("animatedIndex");
+			animatedBubbleContainer[animatedBubbleIndex].style.display = "none";
+			animatedBubbleIndex++;
+		}
+
+		function botIsTyping() {
+			var $chatBox = $('div.chatBox');
+			$(".chatBox").append('<div class="replyContainer animatedIndex"><span class="responseData chatBubble animateBubble"><div class="dotContainer"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span></div></div>');
+			// animatedBubbleIndex = $(".replyContainer:last").index();
+			setTimeout(lol, 2500);
+		}
+
+		function botReply() {
+			var $chatBox = $('div.chatBox');
+			botIsTyping();
+			$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + val.result.fulfillment.speech +
+					'</span></div> ');
 		}
 
 		var yn = ["Ja", "Nei", "Yes", "No"];
@@ -237,9 +245,9 @@
 				} 
 				else if (keyword === "#registrert") {
 					if ( language == "en" )
-						replyArray.push("for the course " + kurs + ".");
+						replyArray.push("Course: " + kurs);
 					else
-						replyArray.push("og påmeldt " + kurs + "-kurset vårt.");
+						replyArray.push("Kurs: " + kurs);
 
 					replyLine = replyArray.join(' ');
 					$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + replyLine + '</span></div> ');
@@ -249,8 +257,7 @@
 				}
 			} 
 			else {
-				$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + val.result.fulfillment.speech +
-					'</span></div> ');
+				botReply();
 			}
 
 

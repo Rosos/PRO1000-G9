@@ -2,11 +2,12 @@
 		var meetingArray = ["Javascript", "CSS", "Java", "C++", "Bootstrap", "JQuery", "Jørgenkode"];
 		var accessToken = "40d24283d3324f6e8294d648bd3b691a";
 		var baseUrl = "https://api.api.ai/v1/";
+		var yn = ["Ja", "Nei", "Yes", "No"];
 		var kurs;
 		var keyword;
 		var language = "en";
 		var input = document.getElementById('input');
-		var richMessageIndex = 0;
+		// var richMessageIndex = 0;
 		var animatedBubbleIndex = 0;
 
 
@@ -117,11 +118,12 @@
 			send(query);
 			input.disabled = false;
 			input.style.opacity = "1.0";
-			x[richMessageIndex].style.display = "none";
+			x[0].remove();
+			// x[richMessageIndex].style.display = "none";
 			$chatBox.append('<div class="userInputContainer"><img class="userPic rightPic" src="css/img/userpicdark.png"><div class="lineBreakDiv"> </div><span class="chatBubble userInput sb1">' + query + '</span></div><div class="lineBreakDiv"> </div>');
 			input.focus();
-			if ( richMessageIndex == 0 )
-						richMessageIndex++;
+			// if ( richMessageIndex == 0 )
+			// 			richMessageIndex++;
 
 		}
 
@@ -141,8 +143,9 @@
 
 		var lol = function hideAnimatedBox() {
 			var animatedBubbleContainer = document.getElementsByClassName("animatedIndex");
-			animatedBubbleContainer[animatedBubbleIndex].style.display = "none";
-			animatedBubbleIndex++;
+			// animatedBubbleContainer[animatedBubbleIndex].style.display = "none";
+			// animatedBubbleIndex++;
+			animatedBubbleContainer[0].remove();
 		}
 
 		function botIsTyping() {
@@ -152,18 +155,17 @@
 			setTimeout(lol, 2500);
 		}
 
-		function botReply() {
+		function botReply(val) {
+			console.log(val.result.fulfillment);
 			var $chatBox = $('div.chatBox');
 			// botIsTyping();
-			$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + val.result.fulfillment.speech +
-					'</span></div> ');
+			$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + val.result.fulfillment.speech + '</span></div> ');
 		}
 
-		var yn = ["Ja", "Nei", "Yes", "No"];
 		// $(document).ready(function() {
 		function setResponse(val) {
+			var replyVar = val;
 			var input = document.getElementById('input');
-
 			var $chatBox = $('div.chatBox');
 			var richmessageInputX;
 			//var richMessageContainer = ('<div class="richMessageContainer">' + richMessageInputX + '</div>');
@@ -217,8 +219,8 @@
 					input.disabled = true;
 					input.style.opacity = "0.35";
 
-					if ( richMessageIndex > 0 ) /* øker en index-variabel for richmessages slik at  */
-						richMessageIndex++;
+					// if ( richMessageIndex > 0 )
+					// 	richMessageIndex++;
 
 					$(".chatBox").stop().animate({ /* Auto-scroll */
 						scrollTop: $(".chatBox")[0].scrollHeight
@@ -235,8 +237,8 @@
 					input.style.opacity = "0.35";
 					input.disabled = true;
 
-					if ( richMessageIndex > 0 )
-						richMessageIndex++;
+					// if ( richMessageIndex > 0 )
+					// 	richMessageIndex++;
 
 					$(".chatBox").stop().animate({ /* Auto-scroll */
 						scrollTop: $(".chatBox")[0].scrollHeight
@@ -257,7 +259,8 @@
 				}
 			} 
 			else {
-				botReply();
+				// $(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + val.result.fulfillment.speech + '</span></div>');
+				botReply(replyVar);
 			}
 
 

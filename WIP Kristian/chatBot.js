@@ -154,7 +154,7 @@
 
 		function botReply() {
 			var $chatBox = $('div.chatBox');
-			botIsTyping();
+			// botIsTyping();
 			$(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + val.result.fulfillment.speech +
 					'</span></div> ');
 		}

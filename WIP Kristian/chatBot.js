@@ -7,9 +7,19 @@
 		var keyword;
 		var language = "en";
 		var input = document.getElementById('input');
+		var sessionIdNumber;
 
+
+		function randomNumberGen() {
+			var min=111111; 
+			var max=999999;  
+			var random = Math.floor(Math.random() * (+max - +min)) + +min; 
+			sessionIdNumber = random;  
+		}
 
 		function languageSelect(lang) { /* velger språk for samtalen */
+			randomNumberGen();
+			console.log(sessionIdNumber);
 			var input = document.getElementById('input');
 			var $chatBox = $('div.chatBox');
 			language = lang;
@@ -85,7 +95,7 @@
 				data: JSON.stringify({
 					query: text,
 					lang: language,
-					sessionId: "somerandomthing"
+					sessionId: sessionIdNumber
 				}),
 				success: function (data) {
 					setResponse(data);

@@ -96,16 +96,26 @@ a.lastLink {
 	width: 42.5%;
 	height: 200px;
 	float: left;
-	margin: 2%;
+	margin: 1px;
 	margin-right: 1%;
 	padding: 20px;
-	font-size: 1.6em;
+	font-size: 1.2em;
 	line-height: 1.5em;
 	font-family: "tahoma";
 	text-align: left;
 	color: #3a3a3a;
+	position: relative;
 }
 
+.chatInfo > img {
+	max-width: 100%;
+	position: relative;
+}
+
+.chatInfo > p {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+}
 
 /** Chat-vindu **/
 .chatbot {
@@ -142,6 +152,7 @@ div.chatBox {
 	left: 0;
 	text-align: center;
 }
+
 
 .inputKeyboard {
 	float: left;
@@ -405,7 +416,7 @@ button {
 		margin-right: 2em;
 	}
 	.chatInfo {
-		font-size: 1.5em;
+		font-size: 1em;
 	}
 	.mainContent {
 		width: 95%;
@@ -431,7 +442,7 @@ button {
 		display: inline-block;
 	}
 	.chatInfo {
-		font-size: 1.4em;
+		font-size: 0.8em;
 		line-height: 1.2em;
 	}
 	.centeredBubble {

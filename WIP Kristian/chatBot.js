@@ -1,14 +1,12 @@
 // <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
-		var meetingArray = ["Javascript", "CSS", "Java", "C++", "Bootstrap", "JQuery", "Jørgenkode"];
 		var accessToken = "40d24283d3324f6e8294d648bd3b691a";
 		var baseUrl = "https://api.api.ai/v1/";
 		var yn = ["Ja", "Nei", "Yes", "No"];
+		var meetingArray = ["Javascript", "JSON", "CSS", "Java", "C++", "Bootstrap", "JQuery", "Python", "Jørgenkode"];
 		var kurs;
 		var keyword;
 		var language = "en";
 		var input = document.getElementById('input');
-		// var richMessageIndex = 0;
-		var animatedBubbleIndex = 0;
 
 
 		function languageSelect(lang) { /* velger språk for samtalen */
@@ -17,17 +15,15 @@
 			language = lang;
 			if ( language == "en" ) {
 				send("wqoieoieowieowieo23232oi3oioioioi");
-				// $(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">Hello! What can I do for you?</span></div> ');
 				input.placeholder = "Type here!";
 			} else if ( language == "no" ) {
 				send("wqoieoieowieowieo23232oi3oioioioi");
-				// $(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">Hei! Hva kan jeg hjelpe deg med?</span></div> ');
 				input.placeholder = "Skriv her!";
 			}
 			input.style.backgroundColor = "#f4f4f4";
-			input.disabled = false;
+			input.disabled = true;
 			document.getElementById('languageSelect').style.display = "none";
-			input.focus();
+			// input.focus();
 		}
 
 		// function ValidateEmail(mail) {
@@ -66,25 +62,12 @@
 					event.preventDefault();
 					let query = $('input').val();
 					$('input').val('');
-					// if ( keyword === "#epost" ) {
-					// 	alert(keyword);
-					// 	if ( ValidateEmail(userInput) ) {
-							// send(query);
-							// console.log('data-js-reply-' + userInputSpans.length, userInput);
-							// $(".chatBox").stop().animate({ /* Auto-scroll */
-							// scrollTop: $(".chatBox")[0].scrollHeight
-							// }, 1000);
-						// } else {|
-						// 	alert("um nei");
-						// }
-
-					// } else {
-						send(query);
-						console.log('data-js-reply-' + userInputSpans.length, userInput);
-						$(".chatBox").stop().animate({ /* Auto-scroll */
-							scrollTop: $(".chatBox")[0].scrollHeight
-						}, 1000);
-					// }
+					send(query);
+					console.log('data-js-reply-' + userInputSpans.length, userInput);
+					
+					$(".chatBox").stop().animate({ /* Auto-scroll */
+						scrollTop: $(".chatBox")[0].scrollHeight
+					}, 1000);
 				}
 			});
 		});
@@ -116,19 +99,16 @@
 			var x = document.getElementsByClassName("richMessageContainer");
 			var input = document.getElementById('input');
 			let query = reply;
-			// id.innerHTML = reply;
+	
 			send(query);
 			input.disabled = false;
 			input.style.opacity = "1.0";
 			x[0].remove();
-			// x[richMessageIndex].style.display = "none";
 			$chatBox.append('<div class="userInputContainer"><img class="userPic rightPic" src="css/img/userpicdark.png">'
 						  + '<div class="lineBreakDiv"> </div><span class="chatBubble userInput sb1">' 
-						  + query + '</span></div><div class="lineBreakDiv"> </div>');
+						  + query 
+						  + '</span></div><div class="lineBreakDiv"> </div>');
 			input.focus();
-			// if ( richMessageIndex == 0 )
-			// 			richMessageIndex++;
-
 		}
 
 		function kursReg(course) {
@@ -147,8 +127,6 @@
 
 		function hideAnimatedBox() {
 			var animatedBubbleContainer = document.getElementsByClassName("animatedIndex");
-			// animatedBubbleContainer[animatedBubbleIndex].style.display = "none";
-			// animatedBubbleIndex++;
 			animatedBubbleContainer[0].remove();
 		}
 
@@ -158,7 +136,6 @@
 				 	           + '<span class="responseData chatBubble animateBubble">'
 				 	           + '<div class="dotContainer"><span class="dot"></span>'
 				 	           + '<span class="dot"></span><span class="dot"></span></span></div></div>');
-			// animatedBubbleIndex = $(".replyContainer:last").index();
 			// setTimeout(lol, 2500);
 		}
 
@@ -183,7 +160,7 @@
 			//var richMessageContainer = ('<div class="richMessageContainer">' + richMessageInputX + '</div>');
 
 
-			// rich message html for Y/N
+			/* rich message html for Y/N */
 			var richmessageInputynEN = ('<div class="richMessageContainer">'
 									  + '<span id="yesInput" class="richMessageStyle" onclick="clickRichMessage(yn[2])">Yes</span>' 
 									  + '<span id="noInput" class="richMessageStyle" onclick="clickRichMessage(yn[3])">No</span></div><br>');
@@ -191,17 +168,6 @@
 									  + '<span id="yesInput" class="richMessageStyle" onclick="clickRichMessage(yn[0])">Ja</span>' 
 									  + '<span id="noInput" class="richMessageStyle" onclick="clickRichMessage(yn[1])">Nei</span></div><br>');
 
-			// rich message html for lists
-			// var richMessageInputList = (
-			// 	'<div class="richMessageContainer"><ul class="meetingList"><li class="meetingListItem" onclick="clickRichMessage(meetingArray[0]), kursReg(meetingArray[0])">' +
-			// 	meetingArray[0] +
-			// 	'</li><li class="richMessageStyle meetingListItem" onclick="clickRichMessage(meetingArray[1]), kursReg(meetingArray[1])">' +
-			// 	meetingArray[1] +
-			// 	'</li><li class="meetingListItem" onclick="clickRichMessage(meetingArray[2]), kursReg(meetingArray[2])">' +
-			// 	meetingArray[2] +
-			// 	'</li><li class="meetingListItem meetingListItemLast" onclick="clickRichMessage(meetingArray[3]), kursReg(meetingArray[3])">' +
-			// 	meetingArray[3] + '</li></ul></div>'
-			// );
 
 			var richMessageInputList = ( '<div class="richMessageContainer"><ul class="meetingList">' 
 									   + richMessageList() 
@@ -239,9 +205,6 @@
 					input.disabled = true;
 					input.style.opacity = "0.35";
 
-					// if ( richMessageIndex > 0 )
-					// 	richMessageIndex++;
-
 					$(".chatBox").stop().animate({ /* Auto-scroll */
 						scrollTop: $(".chatBox")[0].scrollHeight
 					}, 1000);
@@ -260,9 +223,6 @@
 
 					input.style.opacity = "0.35";
 					input.disabled = true;
-
-					// if ( richMessageIndex > 0 )
-					// 	richMessageIndex++;
 
 					$(".chatBox").stop().animate({ /* Auto-scroll */
 						scrollTop: $(".chatBox")[0].scrollHeight
@@ -285,10 +245,8 @@
 									   + '<div class="lineBreakDiv"> </div><span class="chatBubble responseData">' 
 									   + replyLine 
 									   + '</span></div>');
-					// $(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + replyLine + '</span></div> ');
 				}
 			} else {
-				// $(".chatBox").append('<div class="replyContainer"><img class="userPic leftPic" src="css/img/botpic.png"><div class="lineBreakDiv"> </div><span class="chatBubble responseData">' + val.result.fulfillment.speech + '</span></div>');
 				botReply(replyVar);
 			}
 

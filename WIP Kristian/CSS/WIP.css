@@ -68,14 +68,6 @@ a.headerLinks {
 	padding-right: 50px;
 }
 
-
-li.inactive {
-}
-
-a.active {
-
-}
-
 .firstLink {
 	padding-left: 20px;
 }
@@ -442,7 +434,7 @@ button {
 		display: inline-block;
 	}
 	.chatInfo {
-		font-size: 0.8em;
+		font-size: 1em;
 		line-height: 1.2em;
 	}
 	.centeredBubble {
